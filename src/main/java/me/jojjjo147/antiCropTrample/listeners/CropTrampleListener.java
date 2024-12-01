@@ -14,7 +14,9 @@ public class CropTrampleListener implements Listener {
         if (e.getAction() == Action.PHYSICAL) {
             Block block = e.getClickedBlock();
             if (block != null && block.getType() == Material.FARMLAND) {
-                e.setCancelled(true);
+                if (!e.getPlayer().hasPermission("antiCropTrample.bypass")) {
+                    e.setCancelled(true);
+                }
             }
         }
     }
